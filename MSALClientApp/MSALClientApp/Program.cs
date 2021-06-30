@@ -19,10 +19,14 @@ namespace ConsoleApp17
         static void Main(string[] args)
         {
             HttpClient client = new HttpClient();
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AzureAuthenticationStuff.GetAuthToken());
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AzureAuthenticationStuff.GetAuthToken());
             var value = client.GetStringAsync(AzureAuthenticationStuff.Url)
                 .GetAwaiter().GetResult();
             List<Employee> emps = JsonConvert.DeserializeObject<List<Employee>>(value);
+            foreach (var item in emps)
+            {
+                Console.WriteLine(item.FirstName + ", " + item.LastName);
+            }
 
         }
 

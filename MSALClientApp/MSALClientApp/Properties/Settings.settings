@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ConsoleApp17.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ClientID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{insert clientID here}</Value>
+    </Setting>
+    <Setting Name="TenantID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{insert TenantID here}</Value>
+    </Setting>
+    <Setting Name="APIUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{insert APIUrl here}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using ConsoleApp17.Properties;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,19 @@ namespace ConsoleApp17
 {
     public static class AzureAuthenticationStuff
     {
-        public static string ClientID = "8ff723cc-e4fb-461b-a032-6a494da2141a";
+        public static string ClientID = "d824b26a-e490-4990-aa45-1add6c11f80f";
         public static string TenantID = "1ee67c73-1eec-4dc1-9105-cbd0193a0915";
-        public static string[] Scopes = { "https://centriqdata.azurewebsites.net/user_impersonation" };
+        public static string[] Scopes = { "user.read", "api://d824b26a-e490-4990-aa45-1add6c11f80f/user_impersonation" };
         public static string Redirect = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-        public static string Url = "https://centriqdata.azurewebsites.net/data/chuck";
+        public static string Url = "https://centriqtoons.azurewebsites.net/toons";
         public static string GetAuthToken()
         {
-            var app = PublicClientApplicationBuilder.Create(ClientID)
-                .WithAuthority(AadAuthorityAudience.AzureAdMyOrg)
-                .WithTenantId(TenantID)
-                .WithRedirectUri(Redirect)
-                .Build();
+            IPublicClientApplication app= PublicClientApplicationBuilder
+                    .Create(Settings.Default.ClientID)
+                    .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+                    .WithAuthority(AzureCloudInstance.AzurePublic, Settings.Default.TenantID)
+                    .Build();
+
 
             var token = app.AcquireTokenInteractive(Scopes).ExecuteAsync().GetAwaiter().GetResult();
             return token.AccessToken;

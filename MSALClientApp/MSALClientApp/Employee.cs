@@ -6,14 +6,27 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp17
 {
-    class Employee
-    {
-        public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Position { get; set; }
-        public decimal Salary { get; set; }
-        public DateTime? TerminationDate { get; set; }
 
+    public class Employee
+    {
+        private int _ID;
+        private string _FirstName;
+        private string _LastName;
+
+        public int ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
+        }
+        public string FirstName
+        {
+            get { return _FirstName; }
+            set { _FirstName = value; }
+        }
+        public string LastName
+        {
+            get { return _LastName; }
+            set { _LastName = value; }
+        }
     }
 }
